@@ -10,7 +10,7 @@
         android:id="@+id/textView"
         android:layout_width="312dp"
         android:layout_height="135dp"
-        android:text="Hello World"
+        android:text="@string/hello_world"
         tools:layout_centerVertical="true"
         tools:layout_centerHorizontal="true" />
 </RelativeLayout>
