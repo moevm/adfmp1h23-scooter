@@ -21,6 +21,10 @@
             android:exported="false"
             android:theme="@style/Theme.AppCompat" />
         <activity
+            android:name=".MapActivity"
+            android:theme="@style/Theme.AppCompat"
+            android:exported="false" />
+        <activity
             android:name=".SignUp"
             android:exported="false"
             android:theme="@style/Theme.AppCompat" />
