@@ -11,4 +11,5 @@
     <color name="input_background">#F2F5F7</color>
     <color name="top_bar_color">#2E2E2E</color>
     <color name="input_text_color">#DADDDD</color>
+    <color name="background_color">#F8F8F8F8</color>
 </resources>
