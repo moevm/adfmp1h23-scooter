@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
 
 open class Sidebar(val layout: Int) : AppCompatActivity() {
@@ -18,7 +19,6 @@ open class Sidebar(val layout: Int) : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         // write setContentView by init argument of Sidebar
          setContentView(layout)
 
@@ -35,7 +35,8 @@ open class Sidebar(val layout: Int) : AppCompatActivity() {
             drawerLayout.closeDrawer(GravityCompat.START)
             when (id) {
                 R.id.nav_home -> {
-                    Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, Drawler::class.java)
+                    startActivity(intent)
                     true
                 }
                 R.id.nav_settings -> {
@@ -43,12 +44,12 @@ open class Sidebar(val layout: Int) : AppCompatActivity() {
                     true
                 }
                 R.id.nav_logout -> {
-                    Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
                     true
                 }
                 R.id.nav_about -> {
-                    val intent = Intent(this, About::class.java)
-                    startActivity(intent)
+                    replaceFragment(AboutFragment(), "About")
                     true
                 }
                 else -> {
@@ -74,5 +75,13 @@ open class Sidebar(val layout: Int) : AppCompatActivity() {
         } else {
             super.onBackPressed()
         }
+    }
+
+    private fun replaceFragment(fragment: Fragment, title: String) {
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frame_layout, fragment)
+        fragmentTransaction.commit()
+        drawerLayout.closeDrawers()
+        setTitle(title)
     }
 }

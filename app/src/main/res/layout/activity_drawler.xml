@@ -7,8 +7,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E6F4D5"
-    tools:context=".Drawler"
+    tools:context=".Sidebar"
     >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/frame_layout"/>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation"
