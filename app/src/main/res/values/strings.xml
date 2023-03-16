@@ -3,4 +3,6 @@
     <string name="hello_world">Hello World</string>
     <string name="sign_in">Sign in</string>
     <string name="remember_me">Remember me</string>
+    <string name="nav_open" />
+    <string name="nav_close" />
 </resources>
