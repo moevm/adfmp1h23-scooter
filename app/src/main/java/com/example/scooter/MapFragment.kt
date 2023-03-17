@@ -62,7 +62,7 @@ class MapFragment : Fragment() {
         return view
     }
 
-    public fun addScooters() {
+    fun addScooters() {
         for (location in scooter_location_list) {
             val mapObj = mapview.map.mapObjects.addPlacemark(
                 location, ImageProvider.fromResource(
