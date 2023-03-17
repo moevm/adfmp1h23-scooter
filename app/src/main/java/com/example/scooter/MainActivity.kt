@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         }
         val loginBtn = findViewById<Button>(R.id.signin_button)
         loginBtn.setOnClickListener {
-            val intent = Intent(this, Drawler::class.java)
+            val intent = Intent(this, Sidebar::class.java)
             startActivity(intent)
         }
     }

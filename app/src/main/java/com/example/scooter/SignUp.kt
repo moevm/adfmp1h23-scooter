@@ -11,7 +11,7 @@ class SignUp : AppCompatActivity() {
         setContentView(R.layout.activity_sign_up)
         val buttonClick = findViewById<Button>(R.id.continue_button)
         buttonClick.setOnClickListener {
-            val intent = Intent(this, Drawler::class.java)
+            val intent = Intent(this, Sidebar::class.java)
             startActivity(intent)
         }
     }

@@ -17,7 +17,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
 
 
-open class Sidebar(val layout: Int) : AppCompatActivity() {
+class Sidebar : AppCompatActivity() {
 
     lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
     lateinit var drawerLayout: DrawerLayout
@@ -26,7 +26,7 @@ open class Sidebar(val layout: Int) : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // write setContentView by init argument of Sidebar
-         setContentView(layout)
+         setContentView(R.layout.activity_drawler)
 
         drawerLayout = findViewById(R.id.my_drawer_layout)
         navigationView = findViewById(R.id.navigation)
@@ -53,7 +53,7 @@ open class Sidebar(val layout: Int) : AppCompatActivity() {
                     true
                 }
                 R.id.nav_payment_details -> {
-                    Toast.makeText(this, "Payment details", Toast.LENGTH_SHORT).show()
+                    replaceFragment(PaymentDetailsFragment(), "Payment details")
                     true
                 }
                 R.id.nav_my_trips -> {
