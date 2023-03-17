@@ -22,6 +22,7 @@ class Sidebar : AppCompatActivity() {
     lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
     lateinit var drawerLayout: DrawerLayout
     lateinit var navigationView: NavigationView
+    private val mapFragment = MapFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,17 +40,13 @@ class Sidebar : AppCompatActivity() {
         drawerLayout.addDrawerListener(actionBarDrawerToggle)
         actionBarDrawerToggle.syncState()
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        replaceFragment(MapFragment(), "Scooters")
+        replaceFragment(mapFragment, "Scooters")
         navigationView.setNavigationItemSelectedListener { menuItem ->
             val id = menuItem.itemId
             drawerLayout.closeDrawer(GravityCompat.START)
             when (id) {
                 R.id.nav_home -> {
-                    var map = MapFragment()
-                    map.addScooters()
-                    replaceFragment(map, "Scooters")
-//                    val intent = Intent(this, Drawler::class.java)
-//                    startActivity(intent)
+                    replaceFragment(mapFragment, "Scooters")
                     true
                 }
                 R.id.nav_payment_details -> {
@@ -57,12 +54,7 @@ class Sidebar : AppCompatActivity() {
                     true
                 }
                 R.id.nav_my_trips -> {
-                    Toast.makeText(this, "My trips", Toast.LENGTH_SHORT).show()
-                    true
-                }
-                R.id.nav_logout -> {
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
+                    replaceFragment(TripsFragment(), "My Trips")
                     true
                 }
                 R.id.nav_about -> {
