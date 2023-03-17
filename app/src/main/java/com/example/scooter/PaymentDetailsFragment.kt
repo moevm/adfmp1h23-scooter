@@ -1,5 +1,6 @@
 package com.example.scooter
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import androidx.fragment.app.Fragment
@@ -67,6 +68,11 @@ class PaymentDetailsFragment : Fragment() {
             }
         })
 
+        val saveButton = view.findViewById<View>(R.id.saveButton)
+        saveButton.setOnClickListener {
+            val intent = Intent(this.context, ConfirmCard::class.java)
+            startActivity(intent)
+        }
         return view
     }
 

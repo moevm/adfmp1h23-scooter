@@ -12,10 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Scooter"
         tools:targetApi="31">
-<!--        <activity-->
-<!--            android:name=".About"-->
-<!--            android:theme="@style/Theme.AppCompat"-->
-<!--            android:exported="false" />-->
+        <activity
+            android:name=".ConfirmCard"
+            android:theme="@style/Theme.AppCompat"
+            android:exported="false" />
+        <!-- <activity -->
+        <!-- android:name=".About" -->
+        <!-- android:theme="@style/Theme.AppCompat" -->
+        <!-- android:exported="false" /> -->
         <activity
             android:name=".Sidebar"
             android:exported="false"
