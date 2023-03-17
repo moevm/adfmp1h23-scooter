@@ -30,7 +30,6 @@ open class Sidebar(val layout: Int) : AppCompatActivity() {
 
         drawerLayout = findViewById(R.id.my_drawer_layout)
         navigationView = findViewById(R.id.navigation)
-        Log.d("TAG", "onCreate: ${navigationView.menu.size()}")
         for (i in 0 until navigationView.menu.size()) {
             val menuItem = navigationView.menu.getItem(i)
             changeMenuItemColor(menuItem, Color.BLACK)
