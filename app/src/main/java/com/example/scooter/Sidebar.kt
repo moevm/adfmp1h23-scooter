@@ -29,14 +29,17 @@ open class Sidebar(val layout: Int) : AppCompatActivity() {
         drawerLayout.addDrawerListener(actionBarDrawerToggle)
         actionBarDrawerToggle.syncState()
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-
+        replaceFragment(MapFragment(), "Scooters")
         navigationView.setNavigationItemSelectedListener { menuItem ->
             val id = menuItem.itemId
             drawerLayout.closeDrawer(GravityCompat.START)
             when (id) {
                 R.id.nav_home -> {
-                    val intent = Intent(this, Drawler::class.java)
-                    startActivity(intent)
+                    var map = MapFragment()
+                    map.addScooters()
+                    replaceFragment(map, "Scooters")
+//                    val intent = Intent(this, Drawler::class.java)
+//                    startActivity(intent)
                     true
                 }
                 R.id.nav_settings -> {
