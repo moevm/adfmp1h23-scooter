@@ -50,8 +50,12 @@ open class Sidebar(val layout: Int) : AppCompatActivity() {
                     startActivity(intent)
                     true
                 }
-                R.id.nav_settings -> {
-                    Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show()
+                R.id.nav_payment_details -> {
+                    Toast.makeText(this, "Payment details", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                R.id.nav_my_trips -> {
+                    Toast.makeText(this, "My trips", Toast.LENGTH_SHORT).show()
                     true
                 }
                 R.id.nav_logout -> {
