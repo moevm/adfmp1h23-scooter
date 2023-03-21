@@ -1,5 +1,6 @@
 package com.example.scooter
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -14,6 +15,8 @@ class ConfirmCard : AppCompatActivity() {
         }
         val confirmButton = findViewById<Button>(R.id.confirm_button)
         confirmButton.setOnClickListener {
+            val intent = Intent(this, PaymentStatus::class.java)
+            startActivity(intent)
             finish()
         }
     }
