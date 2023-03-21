@@ -77,14 +77,11 @@ class MapFragment : Fragment() {
                 )
             )
             mapObj.zIndex = 1f
-            mapObj.addTapListener { obj, point ->
-                onScooterClick(obj, point)
-                true
-            }
+            mapObj.addTapListener(onScooterClick)
         }
     }
 
-    private fun onScooterClick(mapObject: MapObject, point: Point): Boolean {
+    private val onScooterClick = MapObjectTapListener {mapObject: MapObject, point: Point ->
         val view = getView() as FrameLayout
         val scooterInfo = view.findViewById<View>(R.id.scooter_info) as LinearLayout
         scooterInfo.isVisible = true
@@ -109,6 +106,7 @@ class MapFragment : Fragment() {
             stopTextView.isVisible = true
             startButton.isVisible = false
             stopButton.isVisible = true
+            stopTextView.text = "Time: 0 min\nPrice: 0\$"
             rideStartTs = System.currentTimeMillis()
             handler.postDelayed(runnable, 1000 * updateTimePeriod.toLong())
         }
@@ -121,7 +119,7 @@ class MapFragment : Fragment() {
             scooterInfo.isVisible = false
         }
         Log.d("Marker", point.toString())
-        return true
+        true
     }
 
     companion object {
