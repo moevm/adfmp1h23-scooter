@@ -1,20 +1,26 @@
 package com.example.scooter
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.os.StrictMode
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import com.yandex.mapkit.Animation
 import com.yandex.mapkit.MapKitFactory
 import com.yandex.mapkit.geometry.Point
+import com.yandex.mapkit.layers.GeoObjectTapEvent
+import com.yandex.mapkit.layers.GeoObjectTapListener
 import com.yandex.mapkit.map.CameraPosition
 import com.yandex.mapkit.map.MapObject
+import com.yandex.mapkit.map.MapObjectTapListener
 import com.yandex.mapkit.mapview.MapView
 import com.yandex.runtime.image.ImageProvider
 
@@ -27,6 +33,7 @@ class MapFragment : Fragment() {
         Point(59.970634, 30.319071),
         Point(59.971843, 30.319832),
     )
+    private var rideStartTs: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,13 +90,30 @@ class MapFragment : Fragment() {
         scooterInfo.isVisible = true
         val startButton = view.findViewById<View>(R.id.start_button)
         val stopButton = view.findViewById<View>(R.id.stop_button)
+        val updateTimePeriod = 15
+        val pricePerMinute = 1
+        val stopTextView : TextView = view.findViewById<TextView>(R.id.scooter_info_text_stop)
+        val handler = Handler(Looper.getMainLooper())
+        val runnable = object : Runnable {
+            override fun run() {
+                val newDuration = ((System.currentTimeMillis() - rideStartTs) / 1000 / 60).toInt()
+                val newPrice = newDuration * pricePerMinute
+                Log.d("Marker", "newDuration: $newDuration, newPrice: $newPrice")
+                stopTextView.text = "Time: $newDuration min\nPrice: $newPrice\$"
+                handler.postDelayed(this, 1000 * updateTimePeriod.toLong())
+            }
+        }
         startButton.setOnClickListener {
             view.findViewById<View>(R.id.scooter_info_text_start).isVisible = false
-            view.findViewById<View>(R.id.scooter_info_text_stop).isVisible = true
+            val stopTextView : TextView = view.findViewById<TextView>(R.id.scooter_info_text_stop)
+            stopTextView.isVisible = true
             startButton.isVisible = false
             stopButton.isVisible = true
+            rideStartTs = System.currentTimeMillis()
+            handler.postDelayed(runnable, 1000 * updateTimePeriod.toLong())
         }
         stopButton.setOnClickListener {
+            handler.removeCallbacks(runnable)
             view.findViewById<View>(R.id.scooter_info_text_start).isVisible = true
             view.findViewById<View>(R.id.scooter_info_text_stop).isVisible = false
             startButton.isVisible = true

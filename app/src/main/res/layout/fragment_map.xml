@@ -53,7 +53,7 @@
                     android:textColor="@color/black"
                     android:gravity="center"
                     android:textSize="20sp"
-                    android:text="Time: 10 min\nPrice: 10$"
+                    android:text="Time: 0 min\nPrice: 0$"
                     />
             </LinearLayout>
 
