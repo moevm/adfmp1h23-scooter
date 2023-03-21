@@ -1,10 +1,13 @@
 package com.example.scooter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -74,12 +77,27 @@ class MapActivity : AppCompatActivity() {
         mapview.onStart()
     }
 
+    @SuppressLint("CutPasteId")
     private fun onScooterClick(mapObject: MapObject, point: Point): Boolean {
         val scooterInfo = findViewById<View>(R.id.scooter_info) as LinearLayout
         scooterInfo.isVisible = true
         val startButton = findViewById<View>(R.id.start_button)
         val stopButton = findViewById<View>(R.id.stop_button)
         startButton.setOnClickListener {
+            val textView: TextView = findViewById(R.id.scooter_info_text_stop)
+            Log.d("text_view", textView.toString())
+            var elapsedTimeInSeconds = 0
+            val handler = Handler(Looper.getMainLooper())
+            val runnable = object : Runnable {
+                @SuppressLint("SetTextI18n")
+                override fun run() {
+                    Log.d("elapsedtime", elapsedTimeInSeconds.toString())
+                    elapsedTimeInSeconds++
+                    textView.text = "Elapsed time: $elapsedTimeInSeconds seconds"
+                    handler.postDelayed(this, 1000)
+                }
+            }
+            handler.postDelayed(runnable, 1000)
             findViewById<View>(R.id.scooter_info_text_start).isVisible = false
             findViewById<View>(R.id.scooter_info_text_stop).isVisible = true
             startButton.isVisible = false
