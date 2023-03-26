@@ -1,7 +1,7 @@
 name: MobileCI
 on: [ push ]
 
-job:
+jobs:
 
   unit_test:
     runs-on: ubuntu-latest
