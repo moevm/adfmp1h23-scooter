@@ -15,6 +15,7 @@ class PaymentDetailsViewModelTest {
     }
 
     @Test
+    @Tag("UnitTest")
     fun testCorrectInput() {
         val card = "1234 1234 1234 1234"
         val name = "User User"
@@ -25,7 +26,8 @@ class PaymentDetailsViewModelTest {
     }
 
     @Test
-    fun testIncorrectInput1() {
+    @Tag("UnitTest")
+    fun testIncorrectCardInput() {
         val card = ""
         val name = "User User"
         val date = "01/01/24"
@@ -35,7 +37,8 @@ class PaymentDetailsViewModelTest {
     }
 
     @Test
-    fun testIncorrectInput2() {
+    @Tag("UnitTest")
+    fun testIncorrectUserNameInput() {
         val card = "1234 1234 1234 1234"
         val name = ""
         val date = "01/01/24"
@@ -45,7 +48,8 @@ class PaymentDetailsViewModelTest {
     }
 
     @Test
-    fun testIncorrectInput3() {
+    @Tag("UnitTest")
+    fun testIncorrectDateInput() {
         val card = "1234 1234 1234 1234"
         val name = "User User"
         val date = ""
@@ -55,7 +59,8 @@ class PaymentDetailsViewModelTest {
     }
 
     @Test
-    fun testIncorrectInput4() {
+    @Tag("UnitTest")
+    fun testIncorrectCVVInput() {
         val card = "1234 1234 1234 1234"
         val name = "User User"
         val date = "01/01/24"
