@@ -34,7 +34,7 @@ class SignInViewModelTest {
 
     @Test
     @Tag("UnitTest")
-    fun testIncorrectPasswordAndIncorrectEmail() {  // Почтовый адрес введен некорректно: почтовый адрес несодержит символ "@"
+    fun testIncorrectPasswordAndIncorrectEmail() {  // Почтовый адрес введен некорректно: почтовый адрес не содержит символ "@"
         val strongPassword = "1"
         val email = "gmail.com"
         val result = viewModel.loginUser(email, strongPassword)
