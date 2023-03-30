@@ -15,21 +15,21 @@ class MapViewModelTest {
     }
 
     @Test
-    @Tag("UnitTest")
+
     fun testUserAddedToLocalDb() { // шаг с логином юзера "user1@gmail.com"
         val result = viewModel.getLoginedUser()
         assertEquals(result, "user1@gmail.com")
     }
 
     @Test
-    @Tag("UnitTest")
+
     fun checkUserCardIsAdded() {  // проверка, привязана ли карта к залогиненому юзеру
         val result = viewModel.checkIfUserAddedCard("user1@gmail.com")
         assertTrue(result)
     }
 
     @Test
-    @Tag("UnitTest")
+
     fun checkUserCardIsNotAdded() { // проверка, привязана ли карта к незалогиненому юзеру
         val result = viewModel.checkIfUserAddedCard("user2@gmail.com")
         assertFalse(result)
