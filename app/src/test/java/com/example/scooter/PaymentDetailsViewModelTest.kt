@@ -15,7 +15,7 @@ class PaymentDetailsViewModelTest {
     }
 
     @Test
-    @Tag("UnitTest")
+
     fun testCorrectInput() {  // Все данные карты введены корректно: номер карты, имя владельца карты, дата выпуска карты и CVV код.
         val card = "1234 1234 1234 1234"
         val name = "User User"
@@ -26,7 +26,7 @@ class PaymentDetailsViewModelTest {
     }
 
     @Test
-    @Tag("UnitTest")
+
     fun testIncorrectCardInput() { // Не введен номер карты
         val card = ""
         val name = "User User"
@@ -37,7 +37,7 @@ class PaymentDetailsViewModelTest {
     }
 
     @Test
-    @Tag("UnitTest")
+
     fun testIncorrectUserNameInput() { // Не введено имя владельца карты
         val card = "1234 1234 1234 1234"
         val name = ""
@@ -48,7 +48,7 @@ class PaymentDetailsViewModelTest {
     }
 
     @Test
-    @Tag("UnitTest")
+
     fun testIncorrectDateInput() {   // Не введена дата выпуска карты
         val card = "1234 1234 1234 1234"
         val name = "User User"
@@ -59,7 +59,7 @@ class PaymentDetailsViewModelTest {
     }
 
     @Test
-    @Tag("UnitTest")
+
     fun testIncorrectCVVInput() {  // Не введен CVV код
         val card = "1234 1234 1234 1234"
         val name = "User User"
