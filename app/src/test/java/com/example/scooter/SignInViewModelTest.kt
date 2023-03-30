@@ -15,7 +15,6 @@ class SignInViewModelTest {
     }
 
     @Test
-    @Tag("UnitTest")
     fun testCorrectPasswordAndCorrectEmail() { // Пароль и почтовый адрес введены корректно: пароль длиннее 6 символов, а почтовый адрес содержит символ "@"
         val strongPassword = "1234567"
         val email = "user1@gmail.com"
@@ -24,7 +23,7 @@ class SignInViewModelTest {
     }
 
     @Test
-    @Tag("UnitTest")
+
     fun testIncorrectPasswordAndCorrectEmail() {  // Пароль введен некорректно: пароль короче 6 символов
         val strongPassword = "1"
         val email = "user1@gmail.com"
@@ -33,7 +32,7 @@ class SignInViewModelTest {
     }
 
     @Test
-    @Tag("UnitTest")
+
     fun testIncorrectPasswordAndIncorrectEmail() {  // Почтовый адрес введен некорректно: почтовый адрес не содержит символ "@"
         val strongPassword = "1"
         val email = "gmail.com"
